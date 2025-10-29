@@ -1,4 +1,4 @@
-import GraphGenerator from './GraphGenerator'
+import GraphGenerator from './graph-generator'
 
 function App() {
   return <GraphGenerator />
