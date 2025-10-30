@@ -1,8 +1,6 @@
 {
   "name": "generateur-de-graphes",
   "version": "1.0.0",
-
-  "name": "generateur-de-graphe",
   "private": true,
   "type": "module",
   "scripts": {
