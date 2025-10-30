@@ -1,106 +1,104 @@
-🧭 Mémo Git – Projet Générateur de Graphes
-🚀 Initialisation du dépôt local
-# Initialiser Git dans le dossier du projet
+Voici le README.md complet (version Markdown de la cheat-sheet Git) — formaté pour être clair, joli sur GitHub, et directement utilisable dans ton dépôt generateur-de-graphes.
+
+# 🧭 Cheatsheet Git — Générateur de Graphes
+
+> Toutes les commandes Git utiles pour gérer ton projet React/Vite hébergé sur GitHub et déployé sur Vercel.
+
+---
+
+## 🚀 Initialisation du dépôt local
+
+```bash
 git init
-
-# Ajouter le dépôt distant (GitHub)
 git remote add origin https://github.com/glbprod/generateur-de-graphes.git
-
-# Vérifier la connexion
 git remote -v
 
 🧱 Préparer le premier commit
-# Vérifier les fichiers suivis/non suivis
 git status
-
-# Ajouter tous les fichiers
 git add .
-
-# Créer le commit initial
 git commit -m "Initial commit - App React/Vite Graph Generator"
-
-# Définir la branche principale
 git branch -M main
 
 ☁️ Pousser sur GitHub
-# Premier push vers GitHub
 git push -u origin main
 
-⚠️ En cas de rejet (remote contains work you do not have locally)
+⚠️ En cas de rejet — remote contains work you do not have locally
 
-Ce problème apparaît quand le dépôt GitHub contient déjà un ou plusieurs fichiers (README, LICENSE…).
+Quand le dépôt distant contient déjà des fichiers (README, LICENSE...).
 
-# Fusionner l'historique distant avec le local
 git pull origin main --allow-unrelated-histories
-
-# Ajouter les changements après résolution
 git add .
-
-# Valider la fusion
 git commit -m "Fusion dépôt local et distant"
-
-# Pousser à nouveau
 git push origin main
 
-🔄 Si le dépôt distant a été mis à jour (non-fast-forward / fetch first)
+🔄 En cas d’erreur non-fast-forward ou fetch first
 
 Ton historique local est en retard par rapport à GitHub.
 
-# Mettre à jour ton historique local proprement
 git pull origin main --rebase
-
-# Pousser à nouveau
 git push origin main
 
-🔧 En cas de conflits
-# Après modification des fichiers en conflit :
+🔧 En cas de conflits (pendant un rebase)
+# Édite les fichiers marqués avec <<<<<<<, =======, >>>>>>>
 git add .
 git rebase --continue
 
-🧨 Si tu veux écraser le dépôt distant avec ta version locale
+🧨 Écraser le dépôt distant (⚠️ attention)
 
-⚠️ À utiliser seulement si tu veux remplacer entièrement le contenu sur GitHub.
+À n’utiliser que si ta version locale doit remplacer complètement le contenu distant.
 
 git push origin main --force
 
 🧩 Vérifications utiles
-# Voir les branches
 git branch
-
-# Vérifier le log des commits
 git log --oneline --graph --decorate
-
-# Voir les différences entre local et distant
 git fetch origin
 git diff main origin/main
 
 🧹 Nettoyage
-# Supprimer les dépendances locales
 rm -rf node_modules package-lock.json
-
-# Re-télécharger les dépendances
 npm install
 
-🔁 Routine quotidienne conseillée
-# Mettre à jour ton dépôt avant de coder
+🔁 Routine quotidienne recommandée
+
+Pour garder un historique propre et éviter les conflits.
+
 git pull origin main --rebase
-
-# Ajouter tes modifications
 git add .
-
-# Commit clair
 git commit -m "Ajout : nouvelle fonctionnalité du générateur de graphes"
-
-# Envoyer sur GitHub
 git push origin main
 
-🧠 Astuce bonus
+⚙️ Créer un alias pratique
 
-Pour éviter d’oublier un pull avant un push, tu peux activer un alias Git :
+Combine pull --rebase + push en une seule commande.
 
 git config --global alias.smartpush '!git pull --rebase && git push'
 
 
-Puis tu n’auras plus qu’à faire :
+Utilisation :
 
 git smartpush
+
+🧠 Commandes utiles à connaître
+Commande	Description
+git status	Vérifie les fichiers modifiés / en attente
+git log --oneline	Affiche l’historique des commits
+git diff	Compare les différences entre commits
+git reset --hard HEAD~1	Annule le dernier commit (⚠️ irréversible)
+git stash / git stash pop	Met de côté puis récupère des modifications temporaires
+💡 Conseils rapides
+
+🧭 Fais toujours un git pull --rebase avant de coder.
+
+✏️ Garde tes commits petits et explicites.
+
+👀 Utilise git log --oneline --graph --decorate pour visualiser ton historique avant un push risqué.
+
+🧑‍💻 Crée une branche de test avant d’ajouter une nouvelle fonctionnalité :
+
+git checkout -b feature/nouvelle-fonction
+
+📄 Licence
+
+Ce document fait partie du projet Générateur de Graphes
+ — librement réutilisable (MIT).
