@@ -1,6 +1,10 @@
 {
+<<<<<<< HEAD
   "name": "generateur-de-graphes",
   "version": "1.0.0",
+=======
+  "name": "generateur-de-graphe",
+>>>>>>> 0e9b731 (Remplacement du composant Vite par GraphGenerator)
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,11 +13,14 @@
     "preview": "vite preview",             // 👀 Lance le serveur de prévisualisation
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0"
   },
+<<<<<<< HEAD
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "recharts": "^2.12.6"
   },
+=======
+>>>>>>> 0e9b731 (Remplacement du composant Vite par GraphGenerator)
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.0",
     "autoprefixer": "^10.4.20",
@@ -21,13 +28,20 @@
     "tailwindcss": "^3.4.13",
     "eslint-plugin-react": "^7.34.0"
     "@eslint/js": "^9.36.0",
+    "@tailwindcss/postcss": "^4.0.0",
     "@types/react": "^19.1.16",
     "@types/react-dom": "^19.1.9",
-    "@vitejs/plugin-react": "^5.0.4",
+    "@vitejs/plugin-react": "^5.1.0",
+    "autoprefixer": "^10.4.20",
     "eslint": "^9.36.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.22",
     "globals": "^16.4.0",
-    "vite": "^7.1.7"
+    "postcss": "^8.4.47",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "recharts": "^2.12.6",
+    "tailwindcss": "^3.4.13",
+    "vite": "^6.0.0"
   }
 }
