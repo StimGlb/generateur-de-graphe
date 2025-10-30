@@ -1,26 +1,21 @@
 {
-<<<<<<< HEAD
   "name": "generateur-de-graphes",
   "version": "1.0.0",
-=======
+
   "name": "generateur-de-graphe",
->>>>>>> 0e9b731 (Remplacement du composant Vite par GraphGenerator)
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",                         // 🚀 Démarre le serveur local
-    "build": "vite build",                 // 🧱 Build de production (Vercel l'utilise)
-    "preview": "vite preview",             // 👀 Lance le serveur de prévisualisation
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0"
   },
-<<<<<<< HEAD
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "recharts": "^2.12.6"
   },
-=======
->>>>>>> 0e9b731 (Remplacement du composant Vite par GraphGenerator)
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.0",
     "autoprefixer": "^10.4.20",
