@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cheatsheet Git — Générateur de Graphes</title>
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#94a3b8;
+      --accent:#60a5fa;
+      --accent-2:#7c3aed;
+      --glass: rgba(255,255,255,0.03);
+      --code-bg: rgba(255,255,255,0.03);
+      --white:#e6eef8;
+      --radius:12px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: linear-gradient(180deg,var(--bg) 0%, #071029 120%);
+      color:var(--white);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:28px;
+      line-height:1.5;
+    }
+    .wrap{
+      max-width:1000px;
+      margin:0 auto;
+    }
+    header{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      margin-bottom:20px;
+    }
+    .logo{
+      width:52px;height:52px;border-radius:10px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:flex;align-items:center;justify-content:center;
+      font-weight:700;color:white;font-size:20px;box-shadow:0 6px 18px rgba(2,6,23,0.6);
+    }
+    h1{margin:0;font-size:20px}
+    p.lead{margin:6px 0 0;color:var(--muted);font-size:13px}
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:16px;
+      margin-top:18px;
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:var(--radius);
+      padding:16px;
+      box-shadow: 0 6px 24px rgba(2,6,23,0.6);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .card h2{margin:0 0 8px 0;font-size:15px}
+    .muted{color:var(--muted);font-size:13px;margin-bottom:12px}
+
+    pre{background:var(--code-bg);padding:12px;border-radius:10px;color:var(--white);overflow:auto;margin:0 0 10px 0;font-size:13px}
+    code{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace; color:inherit;}
+    .tools{display:flex;gap:8px;flex-wrap:wrap}
+    button.copy{
+      background:transparent;border:1px solid rgba(255,255,255,0.06);
+      color:var(--white);padding:8px 10px;border-radius:8px;
+      cursor:pointer;font-weight:600;font-size:13px;
+      display:inline-flex;gap:8px;align-items:center;
+    }
+    button.copy:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(12,18,30,0.6)}
+    .hint{font-size:13px;color:var(--muted);margin-top:8px}
+
+    footer{margin-top:20px;color:var(--muted);font-size:13px;text-align:center}
+    @media (min-width:780px){
+      .grid{grid-template-columns: repeat(2,1fr)}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">GG</div>
+      <div>
+        <h1>Cheatsheet Git — Générateur de Graphes</h1>
+        <p class="lead">Toutes les commandes Git utilisées dans la conversation — copie-colle celles dont tu as besoin.</p>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="card">
+        <h2>Initialisation du dépôt local</h2>
+        <p class="muted">Créer un repo git local et ajouter le remote GitHub</p>
+        <pre id="blk-init"><code>
+git init
+git remote add origin https://github.com/glbprod/generateur-de-graphes.git
+git remote -v
+        </code></pre>
+        <div class="tools">
+          <button class="copy" data-target="blk-init">📋 Copier</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Préparer le premier commit</h2>
+        <p class="muted">Ajouter tout et committer</p>
+        <pre id="blk-first"><code>
+git status
+git add .
+git commit -m "Initial commit - App React/Vite Graph Generator"
+git branch -M main
+        </code></pre>
+        <div class="tools">
+          <button class="copy" data-target="blk-first">📋 Copier</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Push vers GitHub</h2>
+        <p class="muted">Premier push (définit la branche upstream)</p>
+        <pre id="blk-push"><code>
+git push -u origin main
+        </code></pre>
+        <div class="tools">
+          <button class="copy" data-target="blk-push">📋 Copier</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Rejet — remote contains work you do not have locally</h2>
+        <p class="muted">Quand le remote contient déjà des fichiers (ex: README). Fusionner proprement :</p>
+        <pre id="blk-unrelated"><code>
+git pull origin main --allow-unrelated-histories
+git add .
+git commit -m "Fusion dépôt local et distant"
+git push origin main
+        </code></pre>
+        <div class="tools">
+          <button class="copy" data-target="blk-unrelated">📋 Copier</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Non-fast-forward / fetch first</h2>
+        <p class="muted">Mettre à jour ton historique local puis push</p>
+        <pre id="blk-rebase"><code>
+git pull origin main --rebase
+git push origin main
+        </code></pre>
+        <div class="tools">
+          <button class="copy" data-target="blk-rebase">📋 Copier</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Gestion des conflits (pendant rebase)</h2>
+        <p class="muted">Après résolution des fichiers en conflit :</p>
+        <pre id="blk-conflict"><code>
+# éditer les fichiers en conflit -> supprimer marqueurs <<<<<<< ======= >>>>>>>
+git add .
+git rebase --continue
+        </code></pre>
+        <div class="tools">
+          <button class="copy" data-target="blk-conflict">📋 Copier</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Écraser le remote (force push) — <span style="color:#f87171">danger</span></h2>
+        <p class="muted">Utiliser uniquement si tu es certain(e) que la version locale doit remplacer le remote.</p>
+        <pre id="blk-force"><code>
+git push origin main --force
+        </code></pre>
+        <div class="tools">
+          <button class="copy" data-target="blk-force">📋 Copier</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Vérifications utiles</h2>
+        <p class="muted">Voir branches, logs, différences</p>
+        <pre id="blk-checks"><code>
+git branch
+git log --oneline --graph --decorate
+git fetch origin
+git diff main origin/main
+        </code></pre>
+        <div class="tools">
+          <button class="copy" data-target="blk-checks">📋 Copier</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Nettoyage & réinstallation</h2>
+        <p class="muted">Supprimer node_modules / package-lock et réinstaller</p>
+        <pre id="blk-clean"><code>
+rm -rf node_modules package-lock.json
+npm install
+        </code></pre>
+        <div class="tools">
+          <button class="copy" data-target="blk-clean">📋 Copier</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Routine quotidienne conseillée</h2>
+        <p class="muted">Bon workflow pour éviter les conflits</p>
+        <pre id="blk-routine"><code>
+git pull origin main --rebase
+git add .
+git commit -m "Ajout : nouvelle fonctionnalité du générateur de graphes"
+git push origin main
+        </code></pre>
+        <div class="tools">
+          <button class="copy" data-target="blk-routine">📋 Copier</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Alias pratique</h2>
+        <p class="muted">Crée un alias pour pull+push en une commande</p>
+        <pre id="blk-alias"><code>
+git config --global alias.smartpush '!git pull --rebase && git push'
+
+# ensuite
+git smartpush
+        </code></pre>
+        <div class="tools">
+          <button class="copy" data-target="blk-alias">📋 Copier</button>
+        </div>
+      </section>
+    </div>
+
+    <div style="margin-top:18px" class="card">
+      <h2>Conseils rapides</h2>
+      <ul style="color:var(--muted);margin:8px 0 0 18px">
+        <li>Fais toujours un <code>git pull --rebase</code> avant de commencer une session de développement.</li>
+        <li>Préfère les commits petits et atomiques (message clair).</li>
+        <li>Utilise <code>git log --oneline --graph --decorate</code> pour inspecter l’historique avant un push risqué.</li>
+      </ul>
+      <p class="hint">Si tu veux, je peux aussi générer une version Markdown (pour ton README) ou un fichier <code>.sh</code> exécutable rassemblant certaines de ces commandes.</p>
+    </div>
+
+    <footer>
+      © Générateur de Graphes — Cheatsheet Git · Exporté automatiquement par ton assistant
+    </footer>
+  </div>
+
+  <script>
+    // Copy handler for each button
+    document.querySelectorAll('button.copy').forEach(btn=>{
+      btn.addEventListener('click', async ()=> {
+        const id = btn.getAttribute('data-target');
+        const pre = document.getElementById(id);
+        if(!pre) return;
+        const text = pre.innerText.trim();
+        try {
+          await navigator.clipboard.writeText(text);
+          btn.textContent = '✅ Copié';
+          setTimeout(()=> btn.textContent = '📋 Copier', 1500);
+        } catch (err) {
+          // fallback
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand('copy'); btn.textContent='✅ Copié'; }
+          catch(e){ alert('Copie impossible — sélectionne et copie manuellement.'); }
+          document.body.removeChild(ta);
+          setTimeout(()=> btn.textContent = '📋 Copier', 1500);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
