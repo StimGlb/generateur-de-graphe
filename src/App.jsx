@@ -1,7 +1,5 @@
-import GraphGenerator from './graph-generator'
+import GraphGenerator from '@/components/graph-generator.jsx'
 
-function App() {
+export default function App() {
   return <GraphGenerator />
 }
-
-export default App
