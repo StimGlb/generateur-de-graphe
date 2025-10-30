@@ -1,5 +1,3 @@
-Voici le README.md complet (version Markdown de la cheat-sheet Git) — formaté pour être clair, joli sur GitHub, et directement utilisable dans ton dépôt generateur-de-graphes.
-
 # 🧭 Cheatsheet Git — Générateur de Graphes
 
 > Toutes les commandes Git utiles pour gérer ton projet React/Vite hébergé sur GitHub et déployé sur Vercel.
