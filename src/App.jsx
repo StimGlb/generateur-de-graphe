@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import GraphGenerator from '@/components/graph-generator.jsx'
 
 export default function App() {
@@ -36,5 +35,4 @@ function App() {
       </p>
     </>
   )
->>>>>>> 0e9b731 (Remplacement du composant Vite par GraphGenerator)
 }
